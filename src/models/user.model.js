@@ -44,6 +44,28 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    subscriptionPlan: {
+      type: String,
+      enum: ['free', 'basic', 'pro'],
+      default: 'free',
+    },
+    lastLogin: {
+      type: Date,
+    },
+    billingInfo: {
+      address: {
+        street: String,
+        city: String,
+        state: String,
+        zipCode: String,
+        country: String,
+      },
+      paymentMethod: {
+        type: String,
+        enum: ['credit_card', 'paypal', 'bank_transfer'],
+        default: 'credit_card',
+      },
+    },
   },
   {
     timestamps: true,
